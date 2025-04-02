@@ -18,22 +18,25 @@
 
     <h1>Here is how to contact me: xyz@xyz.com</h1>
     <form action="mailto:dchew@ucsd.edu" method="post" enctype="text/plain">
-      <label>
+      <label for="email">
         Email:
-        <input type="email" id="email" name="email" /> </label
-      ><br />
+        <input type="email" id="email" name="email" required />
+      </label>
+      <br />
 
-      <label>
+      <label for="subject">
         Subject:
-        <input type="text" id="subject" name="subject" /> </label
-      ><br />
+        <input type="text" id="subject" name="subject" required />
+      </label>
+      <br />
 
-      <label>
+      <label for="message">
         Message:
-        <textarea id="message" name="body"></textarea></label
-      ><br />
+        <textarea id="message" name="body" required></textarea>
+      </label>
+      <br />
 
-      <button>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   </body>
 </html>
