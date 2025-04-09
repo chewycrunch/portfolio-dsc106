@@ -4,16 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Me</title>
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
     <nav>
       <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../projects/index.html">Projects</a></li>
-        <li><a href="../contact/index.html">Contact</a></li>
-        <li><a href="../resume/index.html">Resume</a></li>
+        <li><a class="nav-item" href="../index.html">Home</a></li>
+        <li><a class="nav-item" href="../projects/index.html">Projects</a></li>
         <li>
-          <a href="https://github.com/chewycrunch" target="_blank"
+          <a class="nav-item current" href="../contact/index.html">Contact</a>
+        </li>
+        <li><a class="nav-item" href="../resume/index.html">Resume</a></li>
+        <li>
+          <a
+            class="nav-item"
+            href="https://github.com/chewycrunch"
+            target="_blank"
             >Github Profile</a
           >
         </li>
@@ -21,7 +27,12 @@
     </nav>
 
     <h1>Here is how to contact me: xyz@xyz.com</h1>
-    <form action="mailto:dchew@ucsd.edu" method="post" enctype="text/plain">
+    <form
+      class="contact-form"
+      action="mailto:dchew@ucsd.edu"
+      method="post"
+      enctype="text/plain"
+    >
       <label for="email">
         Email:
         <input type="email" id="email" name="email" required />
