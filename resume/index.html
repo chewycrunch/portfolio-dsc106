@@ -28,13 +28,17 @@
       </ul>
     </nav>
 
-    <header>
+    <header class="resume-header">
       <h1>John Doe</h1>
       <p>
         123-456-7890 | Anytown, USA |
-        <a href="mailto:john.doe@example.com">john.doe@example.com</a> |
-        <a href="https://johndoe.dev">johndoe.dev</a> |
-        <a href="https://github.com/johndoe">github.com/johndoe</a>
+        <a href="mailto:john.doe@example.com" class="hyperlink"
+          >john.doe@example.com</a
+        >
+        | <a href="https://johndoe.dev" class="hyperlink">johndoe.dev</a> |
+        <a href="https://github.com/johndoe" class="hyperlink"
+          >github.com/johndoe</a
+        >
       </p>
     </header>
 
@@ -59,18 +63,26 @@
         </ul>
       </article>
     </section>
-    <hr />
+
     <section>
       <h2>Technical Skills</h2>
-      <ul>
-        <li>
-          <strong>Languages:</strong> JavaScript, TypeScript, Python, Java, Go,
-          SQL, HTML/CSS
-        </li>
-        <li><strong>Tools:</strong> Docker, AWS</li>
-      </ul>
+      <div class="skills-div">
+        <strong>Languages:</strong>
+        <p class="skill-item">JavaScript</p>
+        <p class="skill-item">TypeScript</p>
+        <p class="skill-item">Python</p>
+        <p class="skill-item">Java</p>
+        <p class="skill-item">Go</p>
+        <p class="skill-item">SQL</p>
+        <p class="skill-item">HTML/CSS</p>
+      </div>
+      <div class="skills-div">
+        <strong>Frameworks:</strong>
+        <p class="skill-item">Docker</p>
+        <p class="skill-item">AWS</p>
+      </div>
     </section>
-    <hr />
+
     <section>
       <h2>Experience</h2>
 
@@ -139,7 +151,7 @@
         </ul>
       </article>
     </section>
-    <hr />
+
     <section>
       <h2>Projects</h2>
 
@@ -170,7 +182,7 @@
         </ul>
       </article>
     </section>
-    <hr />
+
     <section>
       <h2>Additional</h2>
       <ul>
