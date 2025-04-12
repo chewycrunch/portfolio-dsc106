@@ -92,14 +92,12 @@ form button {
 /* Resume page */
 .resume-header {
   text-align: center;
-  border-width: 2px;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 2px solid #aaa;
 }
 
 section {
   padding-bottom: 2rem;
-  border-width: 2px;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 2px solid #aaa;
 }
 
 section {
@@ -153,7 +151,7 @@ section ul li {
 }
 
 .projects article h2 {
-  margin: 0
+  margin: 0;
 }
 
 .projects article img {
@@ -165,7 +163,12 @@ h1 {
   font-size: 400%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
