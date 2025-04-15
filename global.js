@@ -46,9 +46,48 @@ for (let p of pages) {
 
 const navLinks = $$("nav a");
 
-// Set current active link
-// let currentLink = navLinks.find(
-//   (a) => a.host === location.host && a.pathname === location.pathname
-// );
+// Add Dark Mode Toggle
+document.body.insertAdjacentHTML(
+  "afterbegin",
+  `
+	<label class="color-scheme">
+		Theme:
+		<select>
+      <option value="light dark">Auto</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+		</select>
+	</label>`
+);
 
-// currentLink?.classList.add("current");
+const select = document.querySelector(".color-scheme select");
+
+// Set color scheme helper
+const setColorScheme = (colorScheme) => {
+  document.documentElement.style.setProperty("color-scheme", colorScheme);
+  console.log("color scheme set to", colorScheme);
+  select.value = colorScheme;
+  localStorage.setItem("colorScheme", colorScheme);
+};
+
+// Set initial color scheme based on localStorage or system preference
+const savedColorScheme = localStorage.getItem("colorScheme");
+const initialColorScheme = ["light dark", "light", "dark"].includes(
+  savedColorScheme
+)
+  ? savedColorScheme
+  : "light dark";
+setColorScheme(initialColorScheme);
+
+// Listen for updates to the color scheme
+select.addEventListener("input", function (event) {
+  console.log("color scheme changed to", event.target.value);
+
+  setColorScheme(event.target.value);
+  // document.documentElement.style.setProperty(
+  //   "color-scheme",
+  //   event.target.value
+  // );
+
+  // localStorage.setItem("colorScheme", event.target.value);
+});

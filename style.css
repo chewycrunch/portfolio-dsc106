@@ -1,6 +1,7 @@
 :root {
   --color-gray: oklch(80% 3% 200);
   --color-accent: oklch(65% 50% 0);
+   color-scheme: light dark;
 }
 
 body {
@@ -26,11 +27,12 @@ img {
 }
 
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   margin-bottom: 0.2em;
   border-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: oklch(80%, 3%, 200);
+  border-bottom-color: var(--border-color);
 }
 
 nav a {
@@ -44,7 +46,7 @@ nav a {
 
 nav a:hover {
   border-bottom: 0.4rem solid var(--color-accent);
-  background-color: oklch(from var(--color-accent) 95% 5% h);
+background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   padding-bottom: 0.1em;
 }
 
@@ -171,4 +173,12 @@ h5,
 h6 {
   line-height: 1.1;
   text-wrap: balance;
+}
+
+/* Dark Mode Switcher */
+
+label.color-scheme {
+  position:absolute;
+  top: 1rem;
+  right: 1rem;
 }
