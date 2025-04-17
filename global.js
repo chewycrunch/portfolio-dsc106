@@ -3,7 +3,7 @@ console.log("IT’S ALIVE!");
 const BASE_PATH =
   location.hostname === "localhost" || location.hostname === "127.0.0.1"
     ? "/"
-    : "/portfolio-106/";
+    : "/portfolio-dsc106/";
 
 function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
