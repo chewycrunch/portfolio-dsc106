@@ -2,8 +2,8 @@ console.log("IT’S ALIVE!");
 
 const BASE_PATH =
   location.hostname === "localhost" || location.hostname === "127.0.0.1"
-    ? "/" // Local server
-    : "/portfolio-106/"; // GitHub Pages repo name
+    ? "/"
+    : "/portfolio-106/";
 
 function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
@@ -84,10 +84,4 @@ select.addEventListener("input", function (event) {
   console.log("color scheme changed to", event.target.value);
 
   setColorScheme(event.target.value);
-  // document.documentElement.style.setProperty(
-  //   "color-scheme",
-  //   event.target.value
-  // );
-
-  // localStorage.setItem("colorScheme", event.target.value);
 });
