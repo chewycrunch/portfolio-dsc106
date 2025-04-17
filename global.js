@@ -42,6 +42,7 @@ for (let p of pages) {
   }
 
   nav.append(a);
+  //
 }
 
 const navLinks = $$("nav a");
