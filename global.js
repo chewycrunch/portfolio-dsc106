@@ -86,3 +86,63 @@ select.addEventListener("input", function (event) {
 
   setColorScheme(event.target.value);
 });
+
+// Handle projects loader
+export async function fetchJSON(url) {
+  try {
+    // Fetch the JSON file from the given URL
+    const response = await fetch(url);
+    if (!response.ok)
+      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching or parsing JSON data:", error);
+  }
+}
+
+export const renderProjects = (
+  project,
+  containerElement,
+  headingLevel = "h2"
+) => {
+  // Clear existing content
+  containerElement.innerHTML = "";
+
+  // Update the project count in the projects-title element
+  const projectsTitle = document.querySelector(".projects-title");
+  if (projectsTitle) {
+    projectsTitle.textContent = `${project.length} Projects`;
+  }
+
+  // Loop through each project and create an article
+  project.forEach((proj) => {
+    const article = document.createElement("article");
+
+    // Dynamically set the heading level
+    const heading = document.createElement(headingLevel);
+    heading.textContent = proj.title;
+
+    // Create and populate the image element
+    const img = document.createElement("img");
+    img.src = proj.image || "https://via.placeholder.com/150";
+    img.alt = proj.title || "Project image";
+
+    // Create and populate the description paragraph
+    const description = document.createElement("p");
+    description.textContent = proj.description || "No description available.";
+
+    // Append elements to the article
+    article.appendChild(heading);
+    article.appendChild(img);
+    article.appendChild(description);
+
+    // Append the article to the container
+    containerElement.appendChild(article);
+  });
+};
+
+export async function fetchGitHubData(username) {
+  return fetchJSON(`https://api.github.com/users/${username}`);
+}

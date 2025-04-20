@@ -1,7 +1,7 @@
 :root {
   --color-gray: oklch(80% 3% 200);
   --color-accent: oklch(65% 50% 0);
-   color-scheme: light dark;
+  color-scheme: light dark;
 }
 
 body {
@@ -46,7 +46,7 @@ nav a {
 
 nav a:hover {
   border-bottom: 0.4rem solid var(--color-accent);
-background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   padding-bottom: 0.1em;
 }
 
@@ -178,7 +178,27 @@ h6 {
 /* Dark Mode Switcher */
 
 label.color-scheme {
-  position:absolute;
+  position: absolute;
   top: 1rem;
   right: 1rem;
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+#profile-stats dt {
+  grid-row: 1;
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+#profile-stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 1.5rem;
 }
