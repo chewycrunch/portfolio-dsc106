@@ -133,10 +133,15 @@ export const renderProjects = (
     const description = document.createElement("p");
     description.textContent = proj.description || "No description available.";
 
+    // Create year
+    const year = document.createElement("p");
+    year.textContent = `c. ${proj.year}`;
+    
     // Append elements to the article
     article.appendChild(heading);
     article.appendChild(img);
     article.appendChild(description);
+    article.appendChild(year);
 
     // Append the article to the container
     containerElement.appendChild(article);
