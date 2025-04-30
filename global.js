@@ -129,6 +129,8 @@ export const renderProjects = (
     img.src = proj.image || "https://via.placeholder.com/150";
     img.alt = proj.title || "Project image";
 
+    const descParent = document.createElement("div");
+
     // Create and populate the description paragraph
     const description = document.createElement("p");
     description.textContent = proj.description || "No description available.";
@@ -136,12 +138,16 @@ export const renderProjects = (
     // Create year
     const year = document.createElement("p");
     year.textContent = `c. ${proj.year}`;
-    
+
+    // Add description and year to parent div
+    descParent.appendChild(description);
+    descParent.appendChild(year);
+
     // Append elements to the article
     article.appendChild(heading);
     article.appendChild(img);
-    article.appendChild(description);
-    article.appendChild(year);
+    article.appendChild(descParent);
+    // article.appendChild(year);
 
     // Append the article to the container
     containerElement.appendChild(article);
