@@ -113,7 +113,9 @@ export const renderProjects = (
   // Update the project count in the projects-title element
   const projectsTitle = document.querySelector(".projects-title");
   if (projectsTitle) {
-    projectsTitle.textContent = `${project.length} Projects`;
+    projectsTitle.textContent = `${project.length} Project${
+      project.length !== 1 ? "s" : ""
+    }`;
   }
 
   // Loop through each project and create an article

@@ -209,3 +209,71 @@ label.color-scheme {
 
   overflow: visible;
 }
+
+.legend {
+  list-style: none;
+  padding: 1em;
+  margin: 0;
+  display: grid;
+  /* lay out legend items responsively in columns */
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em; /* between legend items */
+  border: 1px solid var(--color-gray);
+  border-radius: 0.5rem;
+  align-items: center;
+  margin-block: auto;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em;
+  border-radius: 0.25rem;
+}
+
+.swatch {
+  width: 1em;
+  height: 1em;
+  background-color: var(--color);
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+.container .legend {
+  flex: 1;
+}
+
+/* Pie */
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}
+
+.searchBar {
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--color-gray);
+  border-radius: 0.25rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
