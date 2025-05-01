@@ -6,22 +6,16 @@ const projectsContainer = document.querySelector(".projects");
 
 // D3 Pie Chart
 const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-let selectedIndex = -1;
+let selectedYear = null;
 let query = "";
-let sliceData = [];
 
 function getFilteredProjects() {
-  // 1) start from all projects
   let list = allProjects;
 
-  // 2) if a slice is selected, filter by that year
-  if (selectedIndex !== -1 && sliceData.length != 0) {
-    const yearLabel = sliceData[selectedIndex].data.label;
-    // or however you pull the label string from your pie data
-    list = list.filter((p) => p.year.toString() === yearLabel);
+  if (selectedYear) {
+    list = list.filter((p) => p.year.toString() === selectedYear);
   }
 
-  // 3) always also filter by the search query
   if (query) {
     const q = query.toLowerCase();
     list = list.filter((p) =>
@@ -44,7 +38,6 @@ const renderPieChart = (filteredProjects) => {
 
   const sliceGenerator = d3.pie().value((d) => d.value);
   const arcData = sliceGenerator(data);
-  sliceData = arcData;
   const arcs = arcData.map((d) => arcGenerator(d));
   const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
@@ -59,15 +52,24 @@ const renderPieChart = (filteredProjects) => {
       .append("path")
       .attr("d", arc)
       .attr("fill", colors(idx))
+      .classed("selected", arcData[idx].data.label === selectedYear)
       .on("click", () => {
-        selectedIndex = selectedIndex === idx ? -1 : idx;
+        selectedYear =
+          selectedYear === arcData[idx].data.label
+            ? null
+            : arcData[idx].data.label;
+        // selectedIndex = selectedIndex === idx ? -1 : idx;
 
-        newSVG.selectAll("path").attr("class", (_, i) => {
-          return i === selectedIndex ? "selected" : "";
-        });
+        // newSVG.selectAll("path").attr("class", (_, i) => {
+        //   return arcData[i].data.label === selectedYear ? "selected" : "";
+        //   // return i === selectedIndex ? "selected" : "";
+        // });
 
         const filtered = getFilteredProjects();
         renderProjects(filtered, projectsContainer, "h2");
+        if (query == "") {
+          renderPieChart(allProjects);
+        } else renderPieChart(filtered);
       });
   });
 
@@ -82,10 +84,6 @@ const renderPieChart = (filteredProjects) => {
   });
 };
 
-// Legend
-
-// Insert Data
-
 renderProjects(allProjects, projectsContainer, "h2");
 renderPieChart(allProjects);
 
@@ -97,5 +95,7 @@ searchInput.addEventListener("input", (event) => {
   // filter projects
   const filtered = getFilteredProjects();
   renderProjects(filtered, projectsContainer, "h2");
-  renderPieChart(filtered);
+  if (query == "") {
+    renderPieChart(allProjects);
+  } else renderPieChart(filtered);
 });
