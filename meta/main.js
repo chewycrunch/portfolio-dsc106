@@ -173,8 +173,6 @@ function renderScatterPlot(data, commits) {
     .append("g")
     .attr("transform", `translate(${usableArea.left}, 0)`)
     .call(yAxis);
-
-  // Put all the JS code of Steps inside this function
 }
 
 function renderTooltipContent(commit) {
